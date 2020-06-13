@@ -5,7 +5,7 @@
       <h3>posts</h3>
       <ul>
         <li v-for="article in articles" :key="article.slug">
-          <nuxt-link :to="`/article/${article.slug}`">
+          <nuxt-link :to="article.path">
             {{ article.title }}
           </nuxt-link>
         </li>
@@ -18,8 +18,6 @@
 export default {
   async asyncData({ $content }) {
     const articles = await $content('articles').fetch()
-    // eslint-disable-next-line no-console
-    console.log(articles)
     return { articles }
   }
 }
